@@ -1,0 +1,119 @@
+.portfolio {
+    display: flex;
+    flex-direction: column;
+    max-width: 1140px;
+}
+
+.portfolio__subtitle {
+    color: #8B8B8B;
+    margin: 0 0 30px;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.11;
+}
+
+.portfolio__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.portfolio__item{
+    padding: 21px 0 19px;
+    border-bottom: solid 1px #424242;
+    position: relative;
+}
+
+.portfolio__item:nth-last-child(1){
+    border: 0;
+    padding-bottom: 0;
+}
+
+.portfolio__link {
+    text-decoration: none;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: -1.2px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.portfolio__link:hover {
+    opacity: 0.7;
+}
+
+.portfolio__link::after {
+    content: "";
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 29px;
+    height: 30px;
+    align-self: center;
+    background-image: url('../../images/link-pointer.svg');
+}
+
+.portfolio__text-item {
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    .portfolio {
+        max-width: 668px;
+    }
+    
+    .portfolio__subtitle {
+        color: #A0A0A0;
+        margin: 0 0 20px;
+    }
+    
+    .portfolio__link {
+        font-size: 28px;
+        line-height: 1.78;
+        letter-spacing: -1.12px;
+    }
+
+    .portfolio__item:nth-last-child(1){
+        padding: 19px 0 0;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .portfolio__subtitle {
+        font-size: 14px;
+        line-height: 1.42;
+    }
+
+    .portfolio__link {
+        font-size: 18px;
+        line-height: 1.55;
+        letter-spacing: -0.72px;
+    }
+
+    .portfolio__link::after {
+        display: flex;
+        background-image: url("../../images/text__COLOR_font-main.png");
+        align-items: start;
+        width: 18px;
+        height: 27px;
+    }
+}
+
+@media (max-width: 320px) {
+    .portfolio {
+        max-width: 292px;
+    }
+    
+    .portfolio__item{
+        padding: 21px 0 19px;
+    }
+}

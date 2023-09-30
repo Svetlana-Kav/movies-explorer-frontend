@@ -1,0 +1,28 @@
+.section-name {
+    display: flex;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.88px;
+    margin: 0;
+    padding-bottom: 23px;
+    border-bottom: solid 1px #DADADA;
+}
+
+@media (max-width: 320px) {
+    .section-name {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        padding-bottom: 28px;
+    }
+
+    .section__name_border-black {
+        border-bottom: solid 1px #000;
+    }
+
+  }
+
+  
