@@ -1,11 +1,23 @@
 import "./Header.css";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../images/logo.svg";
+import Navigation from "../Navigation/Navigation";
 
 function Header() {
+  const [burgerMenu, setBurgerMenu] = React.useState(false);
+
+  function openBurgerMenu() {
+    setBurgerMenu(true)
+  }
+
+  function closeBurgerMenu() {
+    setBurgerMenu(false)
+  }
+
   return (
     <>
-      <header className="header">
+      {/* <header className="header">
         <NavLink to="/" className="header__logo-link">
           <img src={logo} alt="зеленый круг логотип сайта" />
         </NavLink>
@@ -17,7 +29,7 @@ function Header() {
             Войти
           </NavLink>
         </nav>
-      </header>
+      </header> */}
 
       <header className="header">
         <NavLink to="/" className="header__logo-link">
@@ -34,7 +46,9 @@ function Header() {
         <NavLink to="/profile" className="header__button-account">
           Аккаунт
         </NavLink>
+        <button onClick={openBurgerMenu} className="header__button-burger"></button>
       </header>
+      {burgerMenu && <Navigation closeBurgerMenu = {closeBurgerMenu}></Navigation>}
     </>
   );
 }
