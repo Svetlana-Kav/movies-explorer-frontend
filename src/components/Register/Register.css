@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   padding: 70px 0;
+  height: 100%;
 }
 
 .register__container {
@@ -13,7 +14,7 @@
 }
 
 .register__logo-link {
-  margin-bottom: 40px;
+  margin-bottom: 37px;
 }
 
 .register__title {
@@ -57,6 +58,17 @@
   line-height: normal;
 }
 
+.register__form-span {
+  color: #ee3465;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 10px 0 0 0;
+  display: none;
+}
+
 .register__form-button {
   border-radius: 3px;
   background: #4285f4;
@@ -71,7 +83,12 @@
   height: 45px;
   flex-shrink: 0;
   border: none;
-  margin: 69px 0 16px;
+  margin: 70px 0 16px;
+}
+
+.register__form-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 .register__text {
@@ -95,4 +112,42 @@
   line-height: normal;
   text-decoration: none;
   margin: 0 0 0 6px;
+}
+
+@media (max-width:768px) {
+  .register {
+    padding: 232px 186px;
+  }
+}
+
+@media (max-width: 500px) {
+  .register {
+    padding: 56px 30px 30px 30px;
+  }
+  .register__container {
+    width: 260px;
+  }
+  .register__logo-link {
+    text-align: center;
+    margin-bottom: 45px;
+  }
+
+  .register__title {
+    text-align: center;
+    margin: 0 0 80px;
+  }
+
+  .register__form-button {
+    width: 260px;
+    font-size: 12px;
+    margin: 160px 0 14px;
+  }
+
+  .register__text {
+    font-size: 12px;
+  }
+
+  .register__link {
+    font-size: 12px;
+  }
 }

@@ -1,11 +1,11 @@
 import "./MoviesCardList.css"
 
-function MoviesCardList() {
+function MoviesCardList({children}) {
+
     return(
         <section className = "movies-list">
-            <div className = "movies-list__container"></div>
-            <div className = "movies-list__button-container">
-                <button className = "movies-list__button">Ещё</button>
+            <div className = "movies-list__container">
+                {children}
             </div>
         </section>
 

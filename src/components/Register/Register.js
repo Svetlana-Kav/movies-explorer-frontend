@@ -17,7 +17,7 @@ function Register() {
           </label>
           <label className="register__form-item">E-mail
             <input required type="email" className="register__form-input"></input>
-            <span className="register__form-span"></span>
+            <span className="register__form-span">Пользователь с таким email уже существует.</span>
           </label>
           <label className="register__form-item">Пароль
             <input required type="password" className="register__form-input"></input>

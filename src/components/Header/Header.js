@@ -17,7 +17,7 @@ function Header() {
 
   return (
     <>
-      {/* <header className="header">
+      <header className="header">
         <NavLink to="/" className="header__logo-link">
           <img src={logo} alt="зеленый круг логотип сайта" />
         </NavLink>
@@ -29,7 +29,7 @@ function Header() {
             Войти
           </NavLink>
         </nav>
-      </header> */}
+      </header>
 
       <header className="header">
         <NavLink to="/" className="header__logo-link">

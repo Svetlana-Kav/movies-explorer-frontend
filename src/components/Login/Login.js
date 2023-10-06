@@ -9,7 +9,7 @@ function Login() {
         <NavLink to="/" className="login__logo-link">
           <img src={logo} alt="зеленый круг логотип сайта" />
         </NavLink>
-        <h2 className="login__title">Добро пожаловать!</h2>
+        <h2 className="login__title">Рады видеть!</h2>
         <form className="login__form-container">
           <label className="login__form-item">E-mail
             <input className="login__form-input"></input>
@@ -19,7 +19,7 @@ function Login() {
             <input className="login__form-input"></input>
             <span className="login__form-span"></span>
           </label>
-          <button className="login__form-button">Зарегистрироваться</button>
+          <button type="submit" className="login__form-button">Войти</button>
         </form>
         <p className="login__text">
           Ещё не зарегистрированы?
