@@ -20,7 +20,6 @@
 .resume__title {
   margin: 0 0 18px;
   color: #fff;
-  font-family: Inter;
   font-size: 50px;
   font-style: normal;
   font-weight: 400;
@@ -32,7 +31,6 @@
   margin: 0 0 26px;
   color: #fff;
   font-feature-settings: "clig" 0, "liga" 0;
-  font-family: Inter;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -43,7 +41,6 @@
   margin: 0;
   color: #fff;
   font-feature-settings: "clig" off, "liga" off;
-  font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -53,7 +50,6 @@
 .resume__link {
   margin: 99px 0 0;
   color: #fff;
-  font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -62,8 +58,6 @@
 }
 
 .resume__foto {
-  /* display: flex; */
-  /* object-fit: contain; */
   max-width: 270px;
   max-height: 327px;
   border-radius: 10px;

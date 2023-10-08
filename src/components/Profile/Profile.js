@@ -18,9 +18,12 @@ function Profile() {
           <label className="profile__element">
             Имя
             <input
+              placeholder="Имя"
               name="name"
               disabled
               required
+              minLength={2}
+              maxLength={30}
               className="profile__input"
               defaultValue="Виталий"
               type="text"
@@ -30,6 +33,7 @@ function Profile() {
           <label className="profile__element">
             E-mail
             <input
+              placeholder="E-mail"
               name="email"
               disabled
               required

@@ -15,7 +15,10 @@ function Register() {
             <label className="register__form-item">
               Имя
               <input
+                placeholder="Имя"
                 required
+                minLength={2}
+                maxLength={30}
                 type="text"
                 className="register__form-input"
               ></input>
@@ -24,7 +27,10 @@ function Register() {
             <label className="register__form-item">
               E-mail
               <input
+                placeholder="E-mail"
                 required
+                minLength={2}
+                maxLength={30}
                 type="email"
                 className="register__form-input"
               ></input>
@@ -35,6 +41,7 @@ function Register() {
             <label className="register__form-item">
               Пароль
               <input
+                placeholder="Пароль"
                 required
                 type="password"
                 className="register__form-input"

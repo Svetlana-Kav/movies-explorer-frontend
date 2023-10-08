@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 18px 70px;
-  background-color: #202020;
+  width: calc(100vw - 140px);
   max-width: 1126px;
 }
 
@@ -28,7 +28,6 @@
 .header__menu-buttons {
   color: #fff;
   text-align: right;
-  font-family: Inter;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -38,7 +37,6 @@
 
 .header__button-registration {
   color: #fff;
-  font-family: Inter;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -55,7 +53,6 @@
   border-radius: 3px;
   background: #3ddc84;
   color: #000;
-  font-family: Inter;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -75,7 +72,6 @@
   flex-shrink: 0;
   color: #fff;
   text-align: center;
-  font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -86,7 +82,7 @@
 
 .header__button-burger {
   background-image: url("../../images/icon-burger.svg");
-  background-color: #202020;
+  background-color: transparent;
   width: 44px;
   height: 44px;
   flex-shrink: 0;
@@ -108,6 +104,7 @@
 @media (max-width: 768px) {
   .header {
     padding: 18px 30px;
+    min-width: calc(100vw - 60px)
   }
 
   .header__menu-buttons {
@@ -126,6 +123,7 @@
 @media (max-width: 320px) {
   .header {
     padding: 18px 20px 18px 14px;
+    min-width: calc(100vw - 38px)
   }
 
   .header__menu-main {

@@ -26,12 +26,17 @@
   background-image: url("../../images/button-close-burger.svg");
   width: 22px;
   height: 22px;
-  background-color: #202020;
+  background-color: transparent;
   border: none;
   background-position: center;
   position: absolute;
   top: 30px;
   right: 25px;
+}
+
+.burger-menu__close-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 .burger-menu__menu {
@@ -47,7 +52,6 @@
   color: #fff;
   text-align: center;
   font-feature-settings: "clig" off, "liga" off;
-  font-family: Inter;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -73,7 +77,6 @@
   background: #313131;
   color: #fff;
   text-align: center;
-  font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

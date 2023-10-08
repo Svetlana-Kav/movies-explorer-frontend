@@ -13,7 +13,7 @@ function MoviesCard({ src, name, duration }) {
     <li>
       <article className="movie">
         <Link className="movie__link-container" to="#">
-          <img className="movie__img" alt="кадр из фильма" src={src}></img>
+          <img className={name} alt="кадр из фильма" src={src}></img>
           <button
             type="button"
             onClick={stateButton}

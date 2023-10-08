@@ -14,12 +14,22 @@ function Login() {
           <form className="login__form-container">
             <label className="login__form-item">
               E-mail
-              <input className="login__form-input"></input>
+              <input
+                required
+                placeholder="E-mail"
+                className="login__form-input"
+              ></input>
               <span className="login__form-span"></span>
             </label>
             <label className="login__form-item">
               Пароль
-              <input className="login__form-input"></input>
+              <input
+                required
+                minLength={2}
+                maxLength={30}
+                placeholder="Пароль"
+                className="login__form-input"
+              ></input>
               <span className="login__form-span"></span>
             </label>
             <button type="submit" className="login__form-button">

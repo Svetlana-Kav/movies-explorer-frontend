@@ -16,11 +16,17 @@
 .filter-checkbox__switch {
   display: flex;
   width: 36px;
-  height: 20px;
+  height: 18px;
   background-image: url(../../images/smalltumboff.svg);
   background-position: center;
   background-size: 36px 20px;
   background-repeat: no-repeat;
+  /* border-radius: 2px; */
+}
+
+.filter-checkbox__switch:hover {
+opacity: 0.8;
+cursor: pointer;
 }
 
 .filter-checkbox__input:checked + span {
@@ -29,12 +35,13 @@
 
 .filter-checkbox__text {
   color: #fff;
-  font-family: Inter;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
+  text-align: center;
   margin: 0;
+  padding: 0;
   max-width: 108px;
 }
 

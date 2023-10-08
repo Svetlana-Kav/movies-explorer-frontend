@@ -25,7 +25,6 @@
     margin: 0;
     padding: 0;
     color: #FFF;
-    font-family: Inter;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -37,7 +36,6 @@
     margin: 0;
     padding: 0;
     color: #FFF;
-    font-family: Inter;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -60,7 +58,6 @@
     margin: 0 ;
     background-color: #3DDC84;
     color: #000;
-    font-family: Inter;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -74,7 +71,6 @@
     justify-content: center;
     margin: 15px 0 0;
     color: #8B8B8B;
-    font-family: Inter;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
@@ -88,7 +84,6 @@
     margin: 0;
     background-color: #303030;
     color: #FFF;
-    font-family: Inter;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
