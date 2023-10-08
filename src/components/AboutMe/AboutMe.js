@@ -1,7 +1,6 @@
 import SectionName from "../NameSection/SectionName";
 import "./AboutMe.css";
 import fotoProfile from "../../images/foto-profile.svg";
-import { NavLink } from "react-router-dom";
 import Portfolio from "../Portfolio/Portfolio";
 
 function AboutMe() {
@@ -10,7 +9,7 @@ function AboutMe() {
       <SectionName text="Студент"></SectionName>
       <div className="resume">
         <div className="resume__data">
-          <h2 className="resume__title">Виталий</h2>
+          <h3 className="resume__title">Виталий</h3>
           <h4 className="resume__subtitle">Фронтенд-разработчик, 30 лет</h4>
           <p className="resume__description">
             Я&nbsp;родился и&nbsp;живу в&nbsp;Саратове, закончил факультет
@@ -20,12 +19,14 @@ function AboutMe() {
             После того, как прошёл курс по&nbsp;веб-разработке, начал заниматься
             фриланс-заказами и&nbsp;ушёл с&nbsp;постоянной работы.
           </p>
-          <NavLink
+          <a
+            target="_blank"
+            rel = "noreferrer"
             className="resume__link"
-            to="https://github.com/Svetlana-Kav"
+            href="https://github.com/Svetlana-Kav"
           >
             Github
-          </NavLink>
+          </a>
         </div>
         <img
           className="resume__foto"

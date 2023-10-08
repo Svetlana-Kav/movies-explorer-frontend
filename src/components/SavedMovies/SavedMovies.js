@@ -14,7 +14,7 @@ function SavedMovies() {
   ];
 
   return (
-    <div className="saved-movies">
+    <main className="saved-movies">
       <SearchForm></SearchForm>
       <MoviesCardList>
         {moviess.map((item, index) => (
@@ -26,7 +26,7 @@ function SavedMovies() {
           ></MoviesCard>
         ))}
       </MoviesCardList>
-    </div>
+    </main>
   );
 }
 

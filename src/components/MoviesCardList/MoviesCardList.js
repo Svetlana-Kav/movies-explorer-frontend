@@ -4,9 +4,9 @@ function MoviesCardList({children}) {
 
     return(
         <section className = "movies-list">
-            <div className = "movies-list__container">
+            <ul className = "movies-list__container">
                 {children}
-            </div>
+            </ul>
         </section>
 
     )

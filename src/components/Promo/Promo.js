@@ -11,7 +11,7 @@ function Promo(){
             <div className="banner">
                 <h1 className="banner__title">Учебный проект студента факультета Веб-разработки.</h1>
                 <NavTab>
-                    <ul className="navigation__list">
+                    <ul className="navigation-list">
                     {listLink.map((item, index)=> (<li key={index} className='banner__element'><a href={item.link} className="banner__link">{item.text}</a></li>))}
                     </ul>
                 </NavTab>

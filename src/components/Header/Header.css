@@ -4,13 +4,11 @@
   align-items: center;
   padding: 18px 70px;
   background-color: #202020;
-  max-width: 1140px;
-  margin: auto;
+  max-width: 1126px;
 }
 
 .header__logo-link:hover {
   opacity: 0.7;
-  margin: auto;
 }
 
 .header__menu-main {
@@ -25,7 +23,6 @@
   align-items: center;
   gap: 16px;
   margin: auto;
-  /* margin-left: 426px; */
 }
 
 .header__menu-buttons {

@@ -13,9 +13,9 @@ function Techs(){
     ]
     return(
         <section className="technologies" id="technologies">
-            <SectionName class = "section__name_border-black" text="Технологии"></SectionName>
-            <h2 className="technologies__title">7 технологий</h2>
-            <h5 className="technologies__subtitle">На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые применили в&nbsp;дипломном проекте.</h5>
+            <SectionName class = "technologies__name-border-black" text="Технологии"></SectionName>
+            <h3 className="technologies__title">7 технологий</h3>
+            <p className="technologies__subtitle">На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые применили в&nbsp;дипломном проекте.</p>
             <ul className="technologies__list">
                 {textArray.map((item, index)=> (<li key={index} className="technologies__item">{item.text}</li>))}
             </ul>

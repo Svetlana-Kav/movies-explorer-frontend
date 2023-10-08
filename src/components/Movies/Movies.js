@@ -42,7 +42,7 @@ function Movies() {
 
 
   return (
-    <>
+    <main className="movies">
       {/* <Preloader></Preloader> */}
       <SearchForm></SearchForm>
       <MoviesCardList>
@@ -56,9 +56,9 @@ function Movies() {
         ))}
       </MoviesCardList>
       <div className="movies__button-container">
-        <button className="movies__button">Ещё</button>
+        <button type="button" className="movies__button">Ещё</button>
       </div>
-    </>
+    </main>
   );
 }
 

@@ -1,10 +1,12 @@
 .footer {
   max-width: 1140px;
-  padding: 79px 70px 20px;
+  width: 100%;
+  padding: 79px 20px;
   margin: auto;
   display: flex;
   flex-direction: column;
   background-color: #202020;
+  flex-shrink: 0;
 }
 
 .footer__subtitle {
@@ -17,7 +19,8 @@
   font-weight: 400;
   line-height: normal;
   border-bottom: solid 1px #424242;
-  padding-bottom: 20px;
+  padding:0 0 20px;
+  margin: 0;
 }
 
 .footer__copyright {

@@ -1,6 +1,4 @@
 import "./Portfolio.css";
-import { NavLink } from "react-router-dom";
-// import linkPointer from "../../images/link-pointer.svg"
 
 function Portfolio() {
   const listLink = [
@@ -23,10 +21,14 @@ function Portfolio() {
       <ul className="portfolio__list">
         {listLink.map((item, index) => (
           <li key={index} className="portfolio__item">
-            <NavLink className="portfolio__link" to={item.link}>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              className="portfolio__link"
+              href={item.link}
+            >
               <p className="portfolio__text-item">{item.text}</p>
-              
-            </NavLink>
+            </a>
           </li>
         ))}
       </ul>
