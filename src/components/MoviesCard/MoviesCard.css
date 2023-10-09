@@ -1,5 +1,6 @@
 .movie {
   display: flex;
+  position: relative;
 }
 
 .movie__link-container {
@@ -11,7 +12,7 @@
   width: 100%;
 }
 
-.movie__link-container:hover .movie__button-save_disactive {
+.movie:hover .movie__button-save_disactive {
   display: block;
 }
 

@@ -13,8 +13,13 @@ function MoviesCard({ src, name, duration }) {
     <li>
       <article className="movie">
         <Link className="movie__link-container" to="#">
-          <img className={name} alt="кадр из фильма" src={src}></img>
-          <button
+          <img className="movie__img" alt={name} src={src}></img>
+          <div className="movie__info">
+            <h2 className="movie__name">{name}</h2>
+            <p className="movie__duration">{duration}</p>
+          </div>
+        </Link>
+        <button
             type="button"
             onClick={stateButton}
             className={
@@ -23,11 +28,6 @@ function MoviesCard({ src, name, duration }) {
                 : "movie__button-save movie__button-save_disactive"
             }
           ></button>
-          <div className="movie__info">
-            <h2 className="movie__name">{name}</h2>
-            <p className="movie__duration">{duration}</p>
-          </div>
-        </Link>
       </article>
     </li>
   );

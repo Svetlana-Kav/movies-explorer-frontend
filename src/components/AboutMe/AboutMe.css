@@ -57,6 +57,11 @@
   text-decoration: none;
 }
 
+.resume__link:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
 .resume__foto {
   max-width: 270px;
   max-height: 327px;

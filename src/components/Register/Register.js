@@ -41,6 +41,8 @@ function Register() {
             <label className="register__form-item">
               Пароль
               <input
+                minLength={2}
+                maxLength={30}
                 placeholder="Пароль"
                 required
                 type="password"
