@@ -75,7 +75,7 @@
     .banner {
         max-width: 728px;
         gap: 314px;
-        padding: 350px 24px 40px;
+        padding: 350px 24px 30px;
     }
     .banner__title {
         max-width: 680px;
@@ -98,11 +98,15 @@
         width: 86px;
         height: 30px;
     }
+
+    .navigation-list {
+        gap: 6px;
+    }
   }
 
   @media (max-width: 320px) {
     .promo {
-        padding: 14px 14px 0 14px;
+        padding: 12px 14px 0 14px;
     }
     .banner {
         max-width: 292px;
@@ -114,10 +118,6 @@
         font-size: 29px;
         line-height: 1.28;
         font-weight: 400;
-    }
-
-    .navigation__list {
-        gap: 6px;
     }
 
     .banner__element {

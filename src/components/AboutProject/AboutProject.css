@@ -69,7 +69,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 15px 0 0;
+    margin: 12px 0 0;
     color: #8B8B8B;
     font-size: 14px;
     font-style: normal;
@@ -101,7 +101,7 @@
 @media (max-width: 768px) {
     .project {
         max-width: 768px;
-        padding: 90px 50px 90px;
+        padding: 88px 50px 90px;
     }
 
     .project__info {
@@ -159,7 +159,7 @@
 
   @media (max-width: 320px) {
     .project {
-        padding: 70px 18px 69px;
+        padding: 68px 18px 69px;
     }
 
     .project__info {
@@ -175,6 +175,7 @@
 
     .project__stages {
         grid-template-columns: 36% 64%;
+        /* height: 3; */
     }
     .project__description {
         font-size: 11px;

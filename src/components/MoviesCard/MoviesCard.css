@@ -78,7 +78,7 @@
   margin: 0;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .movie__button-save_disactive {
     display: block;
   }
@@ -92,22 +92,26 @@
   }
 
   .movie__img {
-  max-height:189px ;
+    max-height: 189px;
   }
 }
 
-@media (max-width:320px) {
+@media (max-width: 320px) {
   .movie__link-container {
-    gap: 17px;
+    gap: 16px;
   }
 
   .movie__name {
-    font-size: 13px;
+    color: #fff;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
   }
 
   .movie__button-save {
     top: 10px;
     right: 10px;
   }
-
 }

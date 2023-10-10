@@ -39,3 +39,9 @@
       gap: 38px;
     }
   }
+
+  @media (max-width: 320px) {
+    .movies-list__container {
+      gap: 36px;
+    }
+  }

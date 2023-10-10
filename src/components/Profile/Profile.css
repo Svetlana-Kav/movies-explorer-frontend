@@ -120,7 +120,7 @@
 
 @media (max-width: 768px) {
   .profile {
-    padding: 230px 0 269px;
+    padding: 230px 0 0;
   }
 
   .profile__title {
@@ -128,7 +128,7 @@
   }
 
   .profile__edit-button {
-    margin: 213px auto 14px;
+    margin: 211px auto 14px;
   }
 }
 

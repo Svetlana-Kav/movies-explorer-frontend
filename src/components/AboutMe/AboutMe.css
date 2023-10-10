@@ -1,5 +1,5 @@
 .student {
-  padding: 110px 70px 125px;
+  padding: 113px 70px 125px;
   max-width: 1140px;
   margin: auto;
 }
@@ -70,7 +70,7 @@
 
 @media (max-width: 768px) {
   .student {
-    padding: 90px 50px;
+    padding: 94px 50px;
     max-width: 668px;
   }
 

@@ -8,8 +8,8 @@
   max-width: 1140px;
   display: flex;
   flex-direction: column;
-  gap: 41px;
-  padding-bottom: 29px;
+  gap: 27px;
+  padding-bottom: 40px;
   margin: 0 auto;
   border-bottom: solid 1px #424242;
 }
@@ -65,6 +65,7 @@
 
   .search__form {
     padding-bottom: 40px;
+    gap: 38px;
   }
 
   .search__input {
@@ -83,7 +84,8 @@
   }
 
   .search__form {
-    padding-bottom: 46px;
+    padding-bottom: 40px;
+    gap: 48px;
   }
 
   .search__input {

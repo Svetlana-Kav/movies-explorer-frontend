@@ -70,7 +70,7 @@
     
     .portfolio__subtitle {
         color: #A0A0A0;
-        margin: 0 0 20px;
+        margin: 0 0 30px;
     }
     
     .portfolio__link {
@@ -89,6 +89,7 @@
     .portfolio__subtitle {
         font-size: 14px;
         line-height: 1.42;
+        margin: 0 0 20px;
     }
 
     .portfolio__link {
