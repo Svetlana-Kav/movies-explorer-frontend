@@ -1,7 +1,7 @@
 .footer {
-  max-width: 1140px;
-  padding: 79px 70px;
+  margin: 79px 70px 20px;
   display: flex;
+  box-sizing: border-box;
   flex-direction: column;
   flex-shrink: 0;
 }
