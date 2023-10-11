@@ -1,0 +1,58 @@
+.filter-checkbox {
+  display: flex;
+  margin: auto;
+  max-width: 156px;
+  gap: 12px;
+}
+
+.filter-checkbox__input {
+  position: absolute;
+  width: 1px; /* если у элемента не будет размеров, некоторые браузеры посчитают, что его вообще нет */
+  height: 1px;
+  overflow: hidden; /* без этого свойства тоже сработает, но так наверняка. Мы его ещё изучим, оно скрывает элементы, выходящие за границы родителя */
+  clip-path: inset(0 0 0 0);
+}
+
+.filter-checkbox__switch {
+  display: flex;
+  width: 36px;
+  height: 18px;
+  background-image: url(../../images/smalltumboff.svg);
+  background-position: center;
+  background-size: 36px 20px;
+  background-repeat: no-repeat;
+  /* border-radius: 2px; */
+}
+
+.filter-checkbox__switch:hover {
+opacity: 0.8;
+cursor: pointer;
+}
+
+.filter-checkbox__input:checked + span {
+  background-image: url(../../images/smalltumb.svg);
+}
+
+.filter-checkbox__text {
+  color: #fff;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  max-width: 108px;
+}
+
+@media (max-width: 767px) {
+    .filter-checkbox {
+        max-width: 148px;
+        gap: 13px;
+      }
+  .filter-checkbox__text {
+    font-size: 11px;
+    line-height: 1.63;
+    max-width: 99px;
+  }
+}

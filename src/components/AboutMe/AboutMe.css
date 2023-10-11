@@ -1,0 +1,176 @@
+.student {
+  padding: 113px 70px 125px;
+  max-width: 1140px;
+  margin: auto;
+}
+
+.resume {
+  margin: 66px auto 100px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /**/
+}
+
+.resume__data {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.resume__title {
+  margin: 0 0 18px;
+  color: #fff;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -2px;
+}
+
+.resume__subtitle {
+  margin: 0 0 26px;
+  color: #fff;
+  font-feature-settings: "clig" 0, "liga" 0;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.11;
+}
+
+.resume__description {
+  margin: 0;
+  color: #fff;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.57;
+}
+
+.resume__link {
+  margin: 99px 0 0;
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+}
+
+.resume__link:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.resume__foto {
+  max-width: 270px;
+  max-height: 327px;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .student {
+    padding: 94px 50px;
+    max-width: 668px;
+  }
+
+  .resume {
+    margin: 66px auto 90px;
+  }
+
+  .resume__data {
+    max-width: 364px;
+  }
+
+  .resume__title {
+    margin: 0 0 16px;
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: -1.6px;
+  }
+
+  .resume__subtitle {
+    margin: 0 0 20px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .resume__description {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .resume__link {
+    margin: 87px 0 0;
+  }
+
+  .resume__foto {
+    max-width: 255px;
+    max-height: 307px;
+  }
+}
+
+@media (max-width: 600px) {
+  .student {
+    padding: 70px 14px;
+  }
+
+  .resume {
+    margin: 60px auto 70px;
+    flex-direction: column-reverse;
+    gap: 40px;
+  }
+
+  .resume__data {
+    margin: auto;
+    text-align: center;
+  }
+
+  .resume__foto {
+    margin: auto;
+  }
+}
+
+@media (max-width: 320px) {
+  .student {
+    max-width: 292px;
+  }
+
+  .resume {
+    margin: 60px auto 70px;
+    flex-direction: column-reverse;
+    gap: 40px;
+  }
+
+  .resume__data {
+    max-width: 292px;
+    text-align: left;
+  }
+
+  .resume__title {
+    margin: 0 0 20px;
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -1.2px;
+  }
+
+  .resume__subtitle {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .resume__description {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .resume__link {
+    margin: 40px 0 0;
+  }
+
+  .resume__foto {
+    margin: 0;
+    max-width: 292px;
+    max-height: 352px;
+  }
+}
