@@ -1,35 +1,16 @@
 import "./Register.css";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import { useForm } from "../../hooks/useForm";
 import { REG_EMAIL, REG_NAME } from "../../utils/constants";
-import { register, authorize } from "../../utils/MainApi";
-import { useContext } from "react";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function Register() {
-  const { values, error, isValid, handleChange, resetInput } = useForm();
+function Register({ handleRegistr}) {
+  const { values, error, isValid, handleChange } = useForm();
 
-  const { value2 } = useContext(CurrentUserContext);
-  const [popupInfo, setPopupInfo] = value2;
-
-  const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
-    register(values.name, values.email, values.password)
-      .then(() => {
-        setPopupInfo({
-          ...popupInfo,
-          ok: true,
-          title: "Вы успешно зарегистрировались.",
-        });
-        resetInput();
-        navigate("/signin");
-      })
-      .catch((res) => {
-        setPopupInfo({ ...popupInfo, error: true, title: res.message });
-      });
+   handleRegistr(values.name,values.email,values.password )
   }
 
   return (

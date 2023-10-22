@@ -25,7 +25,6 @@ function SavedMovies({
   function handleSubmitSearch(value,checked) {
     filterMovies(value,checked, savedMovies);
   }
-  console.log(sortMovies)
   return (
     <main className="saved-movies">
       <SearchForm

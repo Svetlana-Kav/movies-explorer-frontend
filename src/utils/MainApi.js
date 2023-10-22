@@ -3,7 +3,6 @@ export const BASE_URL = "https://api.movieskaverina.nomoredomainsrocks.ru"; //з
 export const handleError = async (response) => {
   if (!response.ok) {
     const res = await response.json();
-    // console.log(`${response.status} ${response.text}`);
     return Promise.reject(res);
   }
   return response.json();

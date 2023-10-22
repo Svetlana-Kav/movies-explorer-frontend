@@ -18,7 +18,7 @@ import Profile from "../Profile/Profile";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import PopupInfo from "../PopupInfo/PopupInfo";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { checkToken, getSavedMovies } from "../../utils/MainApi";
+import { authorize, checkToken, editProfile, getSavedMovies, getUserInfo, register } from "../../utils/MainApi";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { getMovies } from "../../utils/MoviesApi";
 
@@ -42,11 +42,12 @@ function App() {
 
   //данные о user
   const [currentUser, setCurrentUser] = useState({});
+  const [buttonSave, setButtonSave] = useState(false);
 
   //данные для отрисовки попапа, прелоадера, ошибки
   const [popupInfo, setPopupInfo] = useState({});
   const [isPreloader, setIsPreloader] = useState(false);
-  const [isError, setIsError] = useState(false)
+  const [isError, setIsError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -70,7 +71,6 @@ function App() {
         })
         .catch((err) => {
           setSavMovies([]);
-          console.log("нет фильмов");
         });
     }
   }, [loggedIn]);
@@ -96,13 +96,61 @@ function App() {
     }
   }, [location, isActiveHeader]);
 
+  function handleRegistr(name, email, password) {
+    register(name, email, password)
+      .then(() => {
+        setPopupInfo({
+          ...popupInfo,
+          ok: true,
+          title: "Вы успешно зарегистрировались.",
+        });
+        handleAuthorize(password, email)
+      })
+      .then(()=>{
+        navigate("/movies");
+      })
+      .catch((res) => {
+        setPopupInfo({ ...popupInfo, error: true, title: res.message });
+      });
+  }
+
+  function handleAuthorize(password, email){
+    authorize(password, email)
+      .then((data) => {
+        if (data.token) {
+          handleLogin();
+          navigate("/movies", { replace: true });
+        }
+      })
+      .then(()=>{
+        getUserInfo()
+        .then((res)=>{
+          setCurrentUser(res)
+        })
+      })
+      .catch((res) =>{
+        setPopupInfo({...popupInfo, error: true, title: res.message});
+      })
+  }
+
+  function handleEditProfile(values){
+    editProfile(values)
+    .then((res) => {
+      setCurrentUser(res);
+      setButtonSave(false);
+      setPopupInfo({ ...popupInfo, ok: true, title: "Успешно" });
+    })
+    .catch((res)=>{
+      setPopupInfo({ ...popupInfo, error: true, title: res.message });
+    });
+  }
+
   const handleTokenCheck = () => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       checkToken(jwt)
         .then((res) => {
           setCurrentUser(res);
-          // console.log(currentUser);
         })
         .then((res) => {
           setLoggedIn(true);
@@ -123,14 +171,12 @@ function App() {
   }, [sortMovies]);
 
   function filterMovies(value, checked, movies) {
-    // console.log(value, checked, movies)
     let filtered = movies.filter((item) => {
       let sort =
         item.nameRU.toLowerCase().includes(value.searchMovies.toLowerCase()) ||
         item.nameEN.toLowerCase().includes(value.searchMovies.toLowerCase());
       return checked ? sort && item.duration <= 40 : sort;
     });
-    console.log(filtered.length, checked);
     setSortMovies(filtered);
   }
 
@@ -143,7 +189,7 @@ function App() {
         filterMovies(value, checked, movies);
         setIsError(false);
       })
-      .catch(()=>{
+      .catch(() => {
         setIsError(true);
       })
       .finally(() => {
@@ -165,7 +211,11 @@ function App() {
           <Route
             path="/signup"
             element={
-              loggedIn ? <Navigate to="/movies" replace /> : <Register />
+              loggedIn ? (
+                <Navigate to="/movies" replace />
+              ) : (
+                <Register handleRegistr={handleRegistr} />
+              )
             }
           />
           <Route
@@ -174,7 +224,7 @@ function App() {
               loggedIn ? (
                 <Navigate to="/movies" replace />
               ) : (
-                <Login handleLogin={handleLogin} />
+                <Login handleAuthorize = {handleAuthorize} />
               )
             }
           />
@@ -183,7 +233,7 @@ function App() {
             element={
               <ProtectedRoute
                 element={Movies}
-                isError = {isError}
+                isError={isError}
                 getAllMovies={getAllMovies}
                 isPreloader={isPreloader}
                 setAllMovies={setAllMovies}
@@ -223,6 +273,9 @@ function App() {
               <ProtectedRoute
                 element={Profile}
                 loggedIn={loggedIn}
+                handleEditProfile={handleEditProfile}
+                buttonSave ={buttonSave}
+                setButtonSave={setButtonSave}
                 setChecked={setChecked}
                 setSortMovies={setSortMovies}
                 setLoggedIn={setLoggedIn}

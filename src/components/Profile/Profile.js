@@ -4,17 +4,23 @@ import "./Profile.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useForm } from "../../hooks/useForm";
 import { REG_EMAIL, REG_NAME } from "../../utils/constants";
-import { editProfile } from "../../utils/MainApi";
 
-function Profile({setLoggedIn, setSortMovies, setChecked}) {
-  const [buttonSave, setButtonSave] = useState(false);
+function Profile({
+  setLoggedIn,
+  setSortMovies,
+  setChecked,
+  handleEditProfile,
+  setButtonSave,
+  buttonSave
+}) {
+  
   const [disabledButtonSave, setDisabledButtonSave] = useState(false);
 
-  const { value, value2 } = useContext(CurrentUserContext);
-  const [currentUser, setCurrentUser] = value;
-  const [popupInfo, setPopupInfo] = value2
+  const { value } = useContext(CurrentUserContext);
+  const [currentUser] = value;
 
-  const { values, error, isValid, setValues, handleChange,resetInput } = useForm();
+  const { values, error, isValid, setValues, handleChange, resetInput } =
+    useForm();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,24 +44,16 @@ function Profile({setLoggedIn, setSortMovies, setChecked}) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    editProfile(values)
-    .then((res) => {
-      setCurrentUser(res);
-      setButtonSave(false);
-      setPopupInfo({ ...popupInfo, ok: true, title: "Успешно" });
-    })
-    .catch((res)=>{
-      setPopupInfo({ ...popupInfo, error: true, title: res.message });
-    });
+    handleEditProfile(values);
   }
 
   function handleLogout() {
-    resetInput()
+    resetInput();
     localStorage.removeItem("jwt");
     localStorage.removeItem("sortMovies");
     localStorage.removeItem("checked");
     localStorage.removeItem("valueSearch");
-    setChecked(false)
+    setChecked(false);
     setSortMovies(false);
     setLoggedIn(false);
     navigate("/");

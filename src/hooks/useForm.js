@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-//кастомный хук
 export function useForm(inputValues = {}) {
 
   const [values, setValues] = useState(inputValues);
@@ -12,7 +11,6 @@ export function useForm(inputValues = {}) {
 
     setError({ ...error, [name]: validationMessage });
     setValues({ ...values, [name]: value });
-    // console.log(error, values, isValid);
 
     setIsValid(event.target.closest("form").checkValidity());
 

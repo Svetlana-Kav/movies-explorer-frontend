@@ -11,7 +11,7 @@ function SearchForm({
   isDisabledChekbox,
   setIsDisabledChekbox,
 }) {
-  const { values, setValues, handleChange, isValid } = useForm({});
+  const { values, setValues, handleChange } = useForm({});
   const location = useLocation();
 
   useEffect(() => {
@@ -25,7 +25,6 @@ function SearchForm({
   }, []);
 
   useEffect(()=>{
-    console.log(values)
     if (!values.searchMovies && location.pathname === "/movies"){
       setIsDisabledChekbox(true)
     }else if(values && location.pathname === "/movies"){

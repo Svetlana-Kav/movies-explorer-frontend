@@ -36,9 +36,6 @@ function MoviesCard({
           const saved = savedMovies.filter((item) => item.movieId !== id);
           setSavedMovies(saved);
         })
-        .then(() => {
-          console.log(savedMovies);
-        })
         .catch((err) => console.log(err));
     } else {
       addSavedMovies(item)
