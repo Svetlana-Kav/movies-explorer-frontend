@@ -12,6 +12,14 @@
   width: 100%;
 }
 
+.movie__img {
+  object-position: center;
+  object-fit: cover;
+  border-radius: 7px;
+  max-width: 360px;
+  height: 201px;
+}
+
 .movie:hover .movie__button-save_disactive {
   display: block;
 }
@@ -92,6 +100,7 @@
   }
 
   .movie__img {
+    
     max-height: 189px;
   }
 }

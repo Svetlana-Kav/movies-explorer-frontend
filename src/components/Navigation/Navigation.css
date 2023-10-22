@@ -20,6 +20,7 @@
   width: 68%;
   flex-shrink: 0;
   background: #202020;
+  /* z-index: 1; */
 }
 
 .burger-menu__close-button {

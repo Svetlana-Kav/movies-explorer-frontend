@@ -67,7 +67,6 @@
   font-weight: 400;
   line-height: normal;
   margin: 10px 0 0 0;
-  display: none;
 }
 
 .login__form-button {
@@ -84,6 +83,11 @@
   flex-shrink: 0;
   border: none;
   margin: 158px 0 16px;
+}
+
+.login__form-button:disabled {
+  background: #f8f8f8;
+  color: #c2c2c2;
 }
 
 

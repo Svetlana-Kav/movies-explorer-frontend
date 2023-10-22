@@ -2,29 +2,65 @@ import "./SavedMovies.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
-import movies1 from "../../images/cards/movies1.svg";
-import movies2 from "../../images/cards/movies2.svg";
-import movies3 from "../../images/cards/movies3.svg";
+import { useEffect} from "react";
 
-function SavedMovies() {
-  const moviess = [
-    { img: movies1, name: "33 слова о дизайне", duration: "1ч 17м" },
-    { img: movies2, name: "33 слова о дизайне", duration: "1ч 17м" },
-    { img: movies3, name: "33 слова о дизайне", duration: "1ч 17м" },
-  ];
+function SavedMovies({
+  setChecked,
+  checked,
+  sortMovies,
+  setSortMovies,
+  filterMovies,
+  savedMovies,
+  setSavedMovies,
+}) {
 
+  useEffect(() => {
+    if (sortMovies) {
+      setSortMovies();
+      setChecked(false)
+    }
+  }, []);
+
+
+  function handleSubmitSearch(value,checked) {
+    filterMovies(value,checked, savedMovies);
+  }
+  console.log(sortMovies)
   return (
     <main className="saved-movies">
-      <SearchForm></SearchForm>
+      <SearchForm
+        setChecked={setChecked}
+        checked={checked}
+        handleSubmitSearch={handleSubmitSearch}
+      ></SearchForm>
       <MoviesCardList>
-        {moviess.map((item, index) => (
-          <MoviesCard
-            key={index}
-            src={item.img}
-            name={item.name}
-            duration={item.duration}
-          ></MoviesCard>
-        ))}
+        {sortMovies
+          ? sortMovies.map((item, index) => (
+              <MoviesCard
+                savedMovies={savedMovies}
+                setSavedMovies={setSavedMovies}
+                key={index}
+                id={item.movieId}
+                item={item}
+                link={item.trailerLink}
+                src={item.image}
+                name={item.nameRU}
+                duration={item.duration}
+              ></MoviesCard>
+            ))
+          : savedMovies.map((item) => (
+              <MoviesCard
+                savedMovies={savedMovies}
+                setSavedMovies={setSavedMovies}
+                key={item._id}
+                id={item.movieId}
+                item={item}
+                link={item.trailerLink}
+                src={item.image}
+                name={item.nameRU}
+                duration={item.duration}
+              ></MoviesCard>
+            ))}
       </MoviesCardList>
     </main>
   );

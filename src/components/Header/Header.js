@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import Navigation from "../Navigation/Navigation";
 
-function Header() {
+function Header({loggedIn}) {
   const [burgerMenu, setBurgerMenu] = React.useState(false);
-  const [headerActiv, setHeader] = useState(true);
+  // const [headerActiv, setHeader] = useState(true);
 
   function openBurgerMenu() {
     setBurgerMenu(true);
@@ -16,7 +16,7 @@ function Header() {
     setBurgerMenu(false);
   }
 
-  return headerActiv ? (
+  return loggedIn ? (
     <>
       <header className="header">
         <NavLink to="/" className="header__logo-link">
@@ -52,7 +52,7 @@ function Header() {
         <NavLink to="/signup" className="header__button-registration">
           Регистрация
         </NavLink>
-        <NavLink to="/signup" className="header__button-authorization">
+        <NavLink to="/signin" className="header__button-authorization">
           Войти
         </NavLink>
       </nav>
