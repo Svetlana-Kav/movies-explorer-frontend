@@ -48,8 +48,27 @@
   display: none;
 }
 
+.movie__button-save_delete {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: none;
+}
+
+
+.movie:hover .movie__button-save_delete {
+  background-image: url("../../images/button-save-delete.svg");
+  width: 21px;
+  height: 21px;
+  border: none;
+  border-radius: 50%;
+  background-color: #313131;
+  display: block;
+}
+
 .movie__button-save_disactive:hover,
-.movie__button-save_active:hover {
+.movie__button-save_active:hover,
+.movie__button-save_delete:hover {
   opacity: 0.8;
   cursor: pointer;
 }

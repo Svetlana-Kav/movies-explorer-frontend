@@ -4,16 +4,13 @@ import logo from "../../images/logo.svg";
 import { REG_EMAIL } from "../../utils/constants";
 import { useForm } from "../../hooks/useForm";
 
-function Login({handleAuthorize}) {
-
+function Login({ handleAuthorize }) {
   const { values, error, isValid, handleChange } = useForm({});
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAuthorize(values.password, values.email)
+    handleAuthorize(values.password, values.email);
   };
-
 
   return (
     <main>
@@ -53,7 +50,11 @@ function Login({handleAuthorize}) {
               ></input>
               <span className="login__form-span">{error.password}</span>
             </label>
-            <button disabled={isValid ? false : true} type="submit" className="login__form-button">
+            <button
+              disabled={isValid ? false : true}
+              type="submit"
+              className="login__form-button"
+            >
               Войти
             </button>
           </form>

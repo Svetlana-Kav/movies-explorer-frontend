@@ -4,6 +4,7 @@
 }
 
 .search__form {
+  position: relative;
   width: 100%;
   max-width: 1140px;
   display: flex;
@@ -56,6 +57,19 @@
 .search__button:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+.search__error {
+  position: absolute;
+  top: 60px;
+  left: 3px;
+  margin: auto;
+  color: #8b8b8b;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {

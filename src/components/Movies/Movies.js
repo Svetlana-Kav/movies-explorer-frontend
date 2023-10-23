@@ -31,7 +31,9 @@ function Movies({
   }, [sortMovies]);
 
   useEffect(() => {
-    window.addEventListener("resize", determiningNumberFilms);
+    setTimeout(() => {
+      window.addEventListener("resize", determiningNumberFilms);
+    }, 500);
     return window.removeEventListener("resize", determiningNumberFilms);
   });
 
@@ -63,6 +65,7 @@ function Movies({
     if (localStorage.getItem("sortMovies")) {
       let checked = JSON.parse(localStorage.getItem("checked"));
       let sortMovies = JSON.parse(localStorage.getItem("sortMovies"));
+
       setSortMovies(sortMovies);
       setChecked(checked);
     } else {
@@ -79,6 +82,7 @@ function Movies({
     localStorage.setItem("valueSearch", JSON.stringify(value));
     localStorage.setItem("checked", checked);
   }
+
   return (
     <main className="movies">
       <SearchForm

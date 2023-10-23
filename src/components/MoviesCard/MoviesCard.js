@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./MoviesCard.css";
 import { converterTime } from "../../utils/utils";
 import { addSavedMovies, deleteSavedMovies } from "../../utils/MainApi";
+import { useLocation } from "react-router-dom";
 
 function MoviesCard({
   src,
@@ -12,9 +13,13 @@ function MoviesCard({
   item,
   savedMovies,
   setSavedMovies,
+  setSortSavedMovies,
+  sortSavedMovies,
 }) {
   const [saveButton, setSaveButton] = useState(false);
   const [idSavedMovie, setIdSavedMovie] = useState("");
+
+  const location = useLocation();
 
   useEffect(() => {
     const a = savedMovies.some((item) => {
@@ -35,6 +40,12 @@ function MoviesCard({
           setSaveButton(false);
           const saved = savedMovies.filter((item) => item.movieId !== id);
           setSavedMovies(saved);
+          if (location.pathname === "/saved-movies") {
+            const savedSort = sortSavedMovies.filter(
+              (item) => item.movieId !== id
+            );
+            setSortSavedMovies(savedSort);
+          }
         })
         .catch((err) => console.log(err));
     } else {
@@ -67,9 +78,11 @@ function MoviesCard({
           type="button"
           onClick={handleSaveDeleteMovies}
           className={
-            saveButton
-              ? "movie__button-save movie__button-save_active"
-              : "movie__button-save movie__button-save_disactive"
+            !saveButton
+              ? "movie__button-save movie__button-save_disactive"
+              : location.pathname === "/saved-movies"
+              ? "movie__button-save_delete"
+              : "movie__button-save movie__button-save_active"
           }
         ></button>
       </article>

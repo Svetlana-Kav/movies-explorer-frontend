@@ -4,13 +4,12 @@ import logo from "../../images/logo.svg";
 import { useForm } from "../../hooks/useForm";
 import { REG_EMAIL, REG_NAME } from "../../utils/constants";
 
-function Register({ handleRegistr}) {
+function Register({ handleRegistr }) {
   const { values, error, isValid, handleChange } = useForm();
-
 
   function handleSubmit(event) {
     event.preventDefault();
-   handleRegistr(values.name,values.email,values.password )
+    handleRegistr(values.name, values.email, values.password);
   }
 
   return (

@@ -1,7 +1,7 @@
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 import { useForm } from "../../hooks/useForm.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 function SearchForm({
@@ -13,6 +13,7 @@ function SearchForm({
 }) {
   const { values, setValues, handleChange } = useForm({});
   const location = useLocation();
+  const [errorNoValue, setErrorNoValue] = useState(false);
 
   useEffect(() => {
     if (
@@ -24,24 +25,30 @@ function SearchForm({
     }
   }, []);
 
-  useEffect(()=>{
-    if (!values.searchMovies && location.pathname === "/movies"){
-      setIsDisabledChekbox(true)
-    }else if(values && location.pathname === "/movies"){
-      setIsDisabledChekbox(false)
+  useEffect(() => {
+    if (!values.searchMovies) {
+      setIsDisabledChekbox(true);
+    } else {
+      setIsDisabledChekbox(false);
+      setErrorNoValue(false);
     }
-  })
+  });
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleSubmitSearch(values, checked);
+    if (values.searchMovies) {
+      handleSubmitSearch(values, checked);
+      setErrorNoValue(false);
+    } else {
+      setErrorNoValue(true);
+    }
   }
 
   function handleClick(checked) {
     if (values.searchMovies) {
       handleSubmitSearch(values, checked);
     } else {
-      handleSubmitSearch({ searchMovies: "" }, checked);
+      setIsDisabledChekbox(true);
     }
   }
 
@@ -53,11 +60,13 @@ function SearchForm({
             value={values.searchMovies || ""}
             name="searchMovies"
             onChange={handleChange}
-            required
             placeholder="Фильм"
             className="search__input"
           ></input>
           <button type="submit" className="search__button"></button>
+          {errorNoValue && (
+            <span className="search__error">Введите запрос для поиска.</span>
+          )}
         </div>
 
         <FilterCheckbox

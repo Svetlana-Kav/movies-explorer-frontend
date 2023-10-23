@@ -18,7 +18,14 @@ import Profile from "../Profile/Profile";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import PopupInfo from "../PopupInfo/PopupInfo";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { authorize, checkToken, editProfile, getSavedMovies, getUserInfo, register } from "../../utils/MainApi";
+import {
+  authorize,
+  checkToken,
+  editProfile,
+  getSavedMovies,
+  getUserInfo,
+  register,
+} from "../../utils/MainApi";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { getMovies } from "../../utils/MoviesApi";
 
@@ -30,7 +37,8 @@ function App() {
   //переменные для фильмов
   const [allMovies, setAllMovies] = useState([]);
   const [savMovies, setSavMovies] = useState([]);
-  const [sortMovies, setSortMovies] = useState(false);
+  const [sortMovies, setSortMovies] = useState([]);
+  const [sortSavedMovies, setSortSavedMovies] = useState([]);
 
   //состояние чекбокса
   const [checked, setChecked] = useState(false);
@@ -104,9 +112,9 @@ function App() {
           ok: true,
           title: "Вы успешно зарегистрировались.",
         });
-        handleAuthorize(password, email)
+        handleAuthorize(password, email);
       })
-      .then(()=>{
+      .then(() => {
         navigate("/movies");
       })
       .catch((res) => {
@@ -114,7 +122,7 @@ function App() {
       });
   }
 
-  function handleAuthorize(password, email){
+  function handleAuthorize(password, email) {
     authorize(password, email)
       .then((data) => {
         if (data.token) {
@@ -122,27 +130,26 @@ function App() {
           navigate("/movies", { replace: true });
         }
       })
-      .then(()=>{
-        getUserInfo()
-        .then((res)=>{
-          setCurrentUser(res)
-        })
+      .then(() => {
+        getUserInfo().then((res) => {
+          setCurrentUser(res);
+        });
       })
-      .catch((res) =>{
-        setPopupInfo({...popupInfo, error: true, title: res.message});
-      })
+      .catch((res) => {
+        setPopupInfo({ ...popupInfo, error: true, title: res.message });
+      });
   }
 
-  function handleEditProfile(values){
+  function handleEditProfile(values) {
     editProfile(values)
-    .then((res) => {
-      setCurrentUser(res);
-      setButtonSave(false);
-      setPopupInfo({ ...popupInfo, ok: true, title: "Успешно" });
-    })
-    .catch((res)=>{
-      setPopupInfo({ ...popupInfo, error: true, title: res.message });
-    });
+      .then((res) => {
+        setCurrentUser(res);
+        setButtonSave(false);
+        setPopupInfo({ ...popupInfo, ok: true, title: "Успешно" });
+      })
+      .catch((res) => {
+        setPopupInfo({ ...popupInfo, error: true, title: res.message });
+      });
   }
 
   const handleTokenCheck = () => {
@@ -164,12 +171,6 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    if (sortMovies && location.pathname === "/movies") {
-      localStorage.setItem("sortMovies", JSON.stringify(sortMovies));
-    }
-  }, [sortMovies]);
-
   function filterMovies(value, checked, movies) {
     let filtered = movies.filter((item) => {
       let sort =
@@ -177,7 +178,12 @@ function App() {
         item.nameEN.toLowerCase().includes(value.searchMovies.toLowerCase());
       return checked ? sort && item.duration <= 40 : sort;
     });
-    setSortMovies(filtered);
+    if (location.pathname === "/movies") {
+      localStorage.setItem("sortMovies", JSON.stringify(filtered));
+      setSortMovies(filtered);
+    } else if (location.pathname === "/saved-movies") {
+      setSortSavedMovies(filtered);
+    }
   }
 
   function getAllMovies(value, checked) {
@@ -224,7 +230,7 @@ function App() {
               loggedIn ? (
                 <Navigate to="/movies" replace />
               ) : (
-                <Login handleAuthorize = {handleAuthorize} />
+                <Login handleAuthorize={handleAuthorize} />
               )
             }
           />
@@ -255,15 +261,18 @@ function App() {
             path="/saved-movies"
             element={
               <ProtectedRoute
+                element={SavedMovies}
                 setChecked={setChecked}
                 checked={checked}
-                element={SavedMovies}
+                setSortSavedMovies={setSortSavedMovies}
+                sortSavedMovies={sortSavedMovies}
                 savedMovies={savMovies}
                 setSavedMovies={setSavMovies}
                 loggedIn={loggedIn}
                 sortMovies={sortMovies}
-                setSortMovies={setSortMovies}
                 filterMovies={filterMovies}
+                setIsDisabledChekbox={setIsDisabledChekbox}
+                isDisabledChekbox={isDisabledChekbox}
               />
             }
           />
@@ -274,7 +283,7 @@ function App() {
                 element={Profile}
                 loggedIn={loggedIn}
                 handleEditProfile={handleEditProfile}
-                buttonSave ={buttonSave}
+                buttonSave={buttonSave}
                 setButtonSave={setButtonSave}
                 setChecked={setChecked}
                 setSortMovies={setSortMovies}
