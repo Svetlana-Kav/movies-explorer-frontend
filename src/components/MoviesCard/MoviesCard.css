@@ -110,6 +110,16 @@
     display: block;
   }
 
+  .movie__button-save_delete {
+    background-image: url("../../images/button-save-delete.svg");
+    width: 21px;
+    height: 21px;
+    border: none;
+    border-radius: 50%;
+    background-color: #313131;
+    display: block;
+  }
+
   .movie__link-container {
     gap: 25px;
   }

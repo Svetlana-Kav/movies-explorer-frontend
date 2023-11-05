@@ -4,10 +4,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import { useEffect, useState } from "react";
 import Preloader from "../Preloader/Preloader";
-import {
-  NUMBER_CARDS_DESKTOP,
-  NUMBER_CARDS_TABLE_MOBILE,
-} from "../../utils/constants";
+import { NUMBER_ADD_CARDS_DESKTOP, NUMBER_ADD_CARDS_TABLE_MOBILE, NUMBER_MOVIES_FOR_MOBILE, NUMBER_MOVIES_FOR_MONITOR, NUMBER_MOVIES_FOR_TABLET, SIZE_SCREEN_MONITOR, SIZE_SCREEN_TABLET } from "../../utils/constants";
 
 function Movies({
   setChecked,
@@ -38,25 +35,25 @@ function Movies({
   });
 
   function determiningNumberFilms() {
-    if (window.innerWidth > 1100) {
-      setNumberDisplayedMovies(12);
-    } else if (window.innerWidth > 680) {
-      setNumberDisplayedMovies(8);
+    if (window.innerWidth > SIZE_SCREEN_MONITOR) {
+      setNumberDisplayedMovies(NUMBER_MOVIES_FOR_MONITOR);
+    } else if (window.innerWidth > SIZE_SCREEN_TABLET) {
+      setNumberDisplayedMovies(NUMBER_MOVIES_FOR_TABLET);
     } else {
-      setNumberDisplayedMovies(5);
+      setNumberDisplayedMovies(NUMBER_MOVIES_FOR_MOBILE);
     }
   }
 
   function handleClickButtonMore() {
-    if (window.innerWidth > 1100) {
-      setNumberDisplayedMovies(numberDisplayedMovies + NUMBER_CARDS_DESKTOP);
-    } else if (window.innerWidth > 680) {
+    if (window.innerWidth > SIZE_SCREEN_MONITOR) {
+      setNumberDisplayedMovies(numberDisplayedMovies + NUMBER_ADD_CARDS_DESKTOP);
+    } else if (window.innerWidth > SIZE_SCREEN_TABLET) {
       setNumberDisplayedMovies(
-        numberDisplayedMovies + NUMBER_CARDS_TABLE_MOBILE
+        numberDisplayedMovies + NUMBER_ADD_CARDS_TABLE_MOBILE
       );
     } else {
       setNumberDisplayedMovies(
-        numberDisplayedMovies + NUMBER_CARDS_TABLE_MOBILE
+        numberDisplayedMovies + NUMBER_ADD_CARDS_TABLE_MOBILE
       );
     }
   }
