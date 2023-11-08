@@ -14,6 +14,8 @@ function SavedMovies({
   setSortSavedMovies,
   setIsDisabledChekbox,
   isDisabledChekbox,
+  disabledButtonSubmitSearch,
+  disabledInput,
 }) {
   const [showSavedMovies, setShowSavedMovies] = useState(false);
 
@@ -35,6 +37,8 @@ function SavedMovies({
         checked={checked}
         handleSubmitSearch={handleSubmitSearch}
         isDisabledChekbox={isDisabledChekbox}
+        disabledInput={disabledInput}
+        disabledButtonSubmitSearch={disabledButtonSubmitSearch}
       ></SearchForm>
       {showSavedMovies ? (
         <MoviesCardList>

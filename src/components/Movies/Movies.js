@@ -20,6 +20,10 @@ function Movies({
   isPreloader,
   getAllMovies,
   isError,
+  setDisabledButtonSubmit,
+  disabledButtonSubmitSearch,
+  disabledInput,
+
 }) {
   const [numberDisplayedMovies, setNumberDisplayedMovies] = useState(0);
 
@@ -89,6 +93,8 @@ function Movies({
         setChecked={setChecked}
         checked={checked}
         handleSubmitSearch={handleSubmitSearch}
+        disabledInput={disabledInput}
+        disabledButtonSubmitSearch={disabledButtonSubmitSearch}
       ></SearchForm>
       {isPreloader ? (
         <Preloader></Preloader>

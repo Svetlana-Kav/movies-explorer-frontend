@@ -4,7 +4,11 @@ import logo from "../../images/logo.svg";
 import { REG_EMAIL } from "../../utils/constants";
 import { useForm } from "../../hooks/useForm";
 
-function Login({ handleAuthorize }) {
+function Login({
+  handleAuthorize,
+  disabledButtonSubmitRegAuth,
+  disabledInput,
+}) {
   const { values, error, isValid, handleChange } = useForm({});
 
   const handleSubmit = (e) => {
@@ -32,6 +36,7 @@ function Login({ handleAuthorize }) {
                 type="email"
                 pattern={REG_EMAIL}
                 className="login__form-input"
+                disabled={disabledInput ? true : false}
               ></input>
               <span className="login__form-span">{error.email}</span>
             </label>
@@ -47,11 +52,12 @@ function Login({ handleAuthorize }) {
                 required
                 type="password"
                 className="login__form-input"
+                disabled={disabledInput ? true : false}
               ></input>
               <span className="login__form-span">{error.password}</span>
             </label>
             <button
-              disabled={isValid ? false : true}
+              disabled={!isValid || disabledButtonSubmitRegAuth ? true : false}
               type="submit"
               className="login__form-button"
             >

@@ -44,6 +44,16 @@ function App() {
   const [checked, setChecked] = useState(false);
   const [isDisabledChekbox, setIsDisabledChekbox] = useState(false);
 
+  //состояние инпутов и сабмита
+  const [disabledButtonSubmitProfile, setDisabledButtonSubmitProfile] =
+    useState(false);
+  const [disabledButtonSubmitSearch, setDisabledButtonSubmitSearch] =
+    useState(false);
+  const [disabledButtonSubmitRegAuth, setDisabledButtonSubmitSearchRegAuth] =
+    useState(false);
+
+  const [disabledInput, setDisabledInput] = useState(false);
+
   //переменные для футера, хедера
   const [isActiveHeader, setIsActiveHeader] = useState(false);
   const [isActiveFooter, setIsActiveFooter] = useState(false);
@@ -105,6 +115,8 @@ function App() {
   }, [location, isActiveHeader]);
 
   function handleRegistr(name, email, password) {
+    setDisabledButtonSubmitSearchRegAuth(true);
+    setDisabledInput(true);
     register(name, email, password)
       .then(() => {
         setPopupInfo({
@@ -119,10 +131,16 @@ function App() {
       })
       .catch((res) => {
         setPopupInfo({ ...popupInfo, error: true, title: res.message });
+      })
+      .finally(() => {
+        setDisabledButtonSubmitSearchRegAuth(false);
+        setDisabledInput(false);
       });
   }
 
   function handleAuthorize(password, email) {
+    setDisabledButtonSubmitSearchRegAuth(true);
+    setDisabledInput(true);
     authorize(password, email)
       .then((data) => {
         if (data.token) {
@@ -137,10 +155,16 @@ function App() {
       })
       .catch((res) => {
         setPopupInfo({ ...popupInfo, error: true, title: res.message });
+      })
+      .finally(() => {
+        setDisabledButtonSubmitSearchRegAuth(false);
+        setDisabledInput(false);
       });
   }
 
   function handleEditProfile(values) {
+    setDisabledInput(true);
+    setDisabledButtonSubmitProfile(true);
     editProfile(values)
       .then((res) => {
         setCurrentUser(res);
@@ -149,6 +173,9 @@ function App() {
       })
       .catch((res) => {
         setPopupInfo({ ...popupInfo, error: true, title: res.message });
+      })
+      .finally(() => {
+        setDisabledInput(false);
       });
   }
 
@@ -188,6 +215,9 @@ function App() {
 
   function getAllMovies(value, checked) {
     setIsPreloader(true);
+    setDisabledButtonSubmitSearch(true);
+    setDisabledInput(true);
+    setIsDisabledChekbox(true);
     getMovies()
       .then((movies) => {
         setAllMovies(movies);
@@ -200,6 +230,8 @@ function App() {
       })
       .finally(() => {
         setIsPreloader(false);
+        setDisabledButtonSubmitSearch(false);
+        setDisabledInput(false);
       });
   }
 
@@ -220,7 +252,11 @@ function App() {
               loggedIn ? (
                 <Navigate to="/movies" replace />
               ) : (
-                <Register handleRegistr={handleRegistr} />
+                <Register
+                  handleRegistr={handleRegistr}
+                  disabledButtonSubmitRegAuth={disabledButtonSubmitRegAuth}
+                  disabledInput={disabledInput}
+                />
               )
             }
           />
@@ -230,7 +266,11 @@ function App() {
               loggedIn ? (
                 <Navigate to="/movies" replace />
               ) : (
-                <Login handleAuthorize={handleAuthorize} />
+                <Login
+                  handleAuthorize={handleAuthorize}
+                  disabledButtonSubmitRegAuth={disabledButtonSubmitRegAuth}
+                  disabledInput={disabledInput}
+                />
               )
             }
           />
@@ -254,6 +294,9 @@ function App() {
                 setSortMovies={setSortMovies}
                 allMovies={allMovies}
                 filterMovies={filterMovies}
+                disabledInput={disabledInput}
+                disabledButtonSubmitSearch={disabledButtonSubmitSearch}
+                // setDisabledButtonSubmit={setDisabledButtonSubmit}
               />
             }
           />
@@ -273,6 +316,8 @@ function App() {
                 filterMovies={filterMovies}
                 setIsDisabledChekbox={setIsDisabledChekbox}
                 isDisabledChekbox={isDisabledChekbox}
+                disabledInput={disabledInput}
+                disabledButtonSubmitSearch={disabledButtonSubmitSearch}
               />
             }
           />
@@ -288,6 +333,9 @@ function App() {
                 setChecked={setChecked}
                 setSortMovies={setSortMovies}
                 setLoggedIn={setLoggedIn}
+                disabledButtonSubmitProfile={disabledButtonSubmitProfile}
+                setDisabledButtonSubmitProfile={setDisabledButtonSubmitProfile}
+                disabledInput={disabledInput}
               />
             }
           />

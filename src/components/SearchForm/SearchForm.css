@@ -59,6 +59,10 @@
   cursor: pointer;
 }
 
+.search__button:disabled {
+  opacity: 0.5;
+}
+
 .search__error {
   position: absolute;
   top: 60px;

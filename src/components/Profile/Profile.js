@@ -11,10 +11,11 @@ function Profile({
   setChecked,
   handleEditProfile,
   setButtonSave,
-  buttonSave
+  buttonSave,
+  setDisabledButtonSubmitProfile,
+  disabledButtonSubmitProfile,
+  disabledInput,
 }) {
-  
-  const [disabledButtonSave, setDisabledButtonSave] = useState(false);
 
   const { value } = useContext(CurrentUserContext);
   const [currentUser] = value;
@@ -32,9 +33,9 @@ function Profile({
       currentUser.name === values.name &&
       currentUser.email === values.email
     ) {
-      setDisabledButtonSave(true);
+      setDisabledButtonSubmitProfile(true);
     } else {
-      setDisabledButtonSave(false);
+      setDisabledButtonSubmitProfile(false);
     }
   }, [currentUser, values]);
 
@@ -63,14 +64,14 @@ function Profile({
     <main>
       <section className="profile">
         <h1 className="profile__title">{`Привет, ${currentUser.name}!`}</h1>
-        <form onSubmit={handleSubmit} className="profile__form">
+        <form name="editProfile" onSubmit={handleSubmit} className="profile__form">
           <label className="profile__element">
             Имя
             <input
               placeholder="Имя"
               name="name"
               onChange={handleChange}
-              disabled={buttonSave ? false : true}
+              disabled={disabledInput || !buttonSave ? true : false}
               required
               pattern={REG_NAME}
               minLength={2}
@@ -87,7 +88,7 @@ function Profile({
               placeholder="E-mail"
               name="email"
               onChange={handleChange}
-              disabled={buttonSave ? false : true}
+              disabled={disabledInput || !buttonSave ? true : false}
               required
               className="profile__input"
               pattern={REG_EMAIL}
@@ -98,7 +99,7 @@ function Profile({
           </label>
           {buttonSave && (
             <button
-              disabled={!isValid || disabledButtonSave ? true : false}
+              disabled={!isValid || disabledButtonSubmitProfile ? true : false}
               type="submit"
               className="profile__button-save"
             >

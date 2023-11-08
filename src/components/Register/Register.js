@@ -4,7 +4,11 @@ import logo from "../../images/logo.svg";
 import { useForm } from "../../hooks/useForm";
 import { REG_EMAIL, REG_NAME } from "../../utils/constants";
 
-function Register({ handleRegistr }) {
+function Register({
+  handleRegistr,
+  disabledButtonSubmitRegAuth,
+  disabledInput,
+}) {
   const { values, error, isValid, handleChange } = useForm();
 
   function handleSubmit(event) {
@@ -34,6 +38,7 @@ function Register({ handleRegistr }) {
                 pattern={REG_NAME}
                 type="text"
                 className="register__form-input"
+                disabled={disabledInput ? true : false}
               ></input>
               <span className="register__form-span">{error.name}</span>
             </label>
@@ -48,6 +53,7 @@ function Register({ handleRegistr }) {
                 type="email"
                 pattern={REG_EMAIL}
                 className="register__form-input"
+                disabled={disabledInput ? true : false}
               ></input>
               <span className="register__form-span">{error.email}</span>
             </label>
@@ -63,12 +69,13 @@ function Register({ handleRegistr }) {
                 required
                 type="password"
                 className="register__form-input"
+                disabled={disabledInput ? true : false}
               ></input>
               <span className="register__form-span">{error.password}</span>
             </label>
             <button
               type="submit"
-              disabled={isValid ? false : true}
+              disabled={!isValid || disabledButtonSubmitRegAuth ? true : false}
               className="register__form-button"
             >
               Зарегистрироваться

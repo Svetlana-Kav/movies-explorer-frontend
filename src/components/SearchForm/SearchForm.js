@@ -10,6 +10,8 @@ function SearchForm({
   setChecked,
   isDisabledChekbox,
   setIsDisabledChekbox,
+  disabledInput,
+  disabledButtonSubmitSearch
 }) {
   const { values, setValues, handleChange } = useForm({});
   const location = useLocation();
@@ -26,7 +28,7 @@ function SearchForm({
   }, []);
 
   useEffect(() => {
-    if (!values.searchMovies) {
+    if (!values.searchMovies || !localStorage.getItem("sortMovies") ) {
       setIsDisabledChekbox(true);
     } else {
       setIsDisabledChekbox(false);
@@ -62,8 +64,13 @@ function SearchForm({
             onChange={handleChange}
             placeholder="Фильм"
             className="search__input"
+            disabled={disabledInput ? true : false}
           ></input>
-          <button type="submit" className="search__button"></button>
+          <button
+            type="submit"
+            disabled={disabledButtonSubmitSearch ? true : false}
+            className="search__button"
+          ></button>
           {errorNoValue && (
             <span className="search__error">Введите запрос для поиска.</span>
           )}
