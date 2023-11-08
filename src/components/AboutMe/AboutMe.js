@@ -9,19 +9,18 @@ function AboutMe() {
       <SectionName text="Студент"></SectionName>
       <div className="resume">
         <div className="resume__data">
-          <h3 className="resume__title">Виталий</h3>
-          <h4 className="resume__subtitle">Фронтенд-разработчик, 30 лет</h4>
+          <h3 className="resume__title">Светлана</h3>
+          <h4 className="resume__subtitle">Web-разработчик, 26 лет</h4>
           <p className="resume__description">
-            Я&nbsp;родился и&nbsp;живу в&nbsp;Саратове, закончил факультет
-            экономики СГУ. У&nbsp;меня есть жена и&nbsp;дочь. Я&nbsp;люблю
-            слушать музыку, а&nbsp;ещё увлекаюсь бегом. Недавно начал кодить.
-            С&nbsp;2015 года работал в&nbsp;компании &laquo;СКБ Контур&raquo;.
-            После того, как прошёл курс по&nbsp;веб-разработке, начал заниматься
-            фриланс-заказами и&nbsp;ушёл с&nbsp;постоянной работы.
+            Не так давно, я поняла, что больше не хочу ходить на работу.
+            Удаленная работа стала моей мечтой. Эта мечта оказалась вполне
+            реальна и я решила сменить сферу деятельности. Я прошла обучение на
+            курсе web-разработки. Теперь на шаг ближе. Следующий шаг - стать
+            профессионалом в данной области. 
           </p>
           <a
             target="_blank"
-            rel = "noreferrer"
+            rel="noreferrer"
             className="resume__link"
             href="https://github.com/Svetlana-Kav"
           >

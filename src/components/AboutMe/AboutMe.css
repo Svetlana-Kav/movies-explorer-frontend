@@ -66,6 +66,8 @@
   max-width: 270px;
   max-height: 327px;
   border-radius: 10px;
+  object-position: center;
+  object-fit: cover;
 }
 
 @media (max-width: 768px) {
