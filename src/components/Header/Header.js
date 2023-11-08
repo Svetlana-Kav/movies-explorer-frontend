@@ -1,12 +1,11 @@
 import "./Header.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import Navigation from "../Navigation/Navigation";
 
-function Header() {
-  const [burgerMenu, setBurgerMenu] = React.useState(false);
-  const [headerActiv, setHeader] = useState(true);
+function Header({ loggedIn }) {
+  const [burgerMenu, setBurgerMenu] = useState(false);
 
   function openBurgerMenu() {
     setBurgerMenu(true);
@@ -16,17 +15,35 @@ function Header() {
     setBurgerMenu(false);
   }
 
-  return headerActiv ? (
+  return loggedIn ? (
     <>
       <header className="header">
         <NavLink to="/" className="header__logo-link">
           <img src={logo} alt="зеленый круг логотип сайта" />
         </NavLink>
         <nav className="header__menu-movies">
-          <NavLink to="/movies" className="header__menu-buttons">
+          <NavLink
+            to="/movies"
+            className={({ isActive }) =>
+              `${
+                isActive
+                  ? "header__menu-buttons_active"
+                  : "header__menu-buttons"
+              }`
+            }
+          >
             Фильмы
           </NavLink>
-          <NavLink to="/saved-movies" className="header__menu-buttons">
+          <NavLink
+            to="/saved-movies"
+            className={({ isActive }) =>
+              `${
+                isActive
+                  ? "header__menu-buttons_active"
+                  : "header__menu-buttons"
+              }`
+            }
+          >
             Сохраненные фильмы
           </NavLink>
         </nav>
@@ -34,7 +51,7 @@ function Header() {
           Аккаунт
         </NavLink>
         <button
-        type="button"
+          type="button"
           onClick={openBurgerMenu}
           className="header__button-burger"
         ></button>
@@ -52,7 +69,7 @@ function Header() {
         <NavLink to="/signup" className="header__button-registration">
           Регистрация
         </NavLink>
-        <NavLink to="/signup" className="header__button-authorization">
+        <NavLink to="/signin" className="header__button-authorization">
           Войти
         </NavLink>
       </nav>

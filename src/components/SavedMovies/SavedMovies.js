@@ -2,30 +2,85 @@ import "./SavedMovies.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
-import movies1 from "../../images/cards/movies1.svg";
-import movies2 from "../../images/cards/movies2.svg";
-import movies3 from "../../images/cards/movies3.svg";
+import { useEffect, useState } from "react";
 
-function SavedMovies() {
-  const moviess = [
-    { img: movies1, name: "33 слова о дизайне", duration: "1ч 17м" },
-    { img: movies2, name: "33 слова о дизайне", duration: "1ч 17м" },
-    { img: movies3, name: "33 слова о дизайне", duration: "1ч 17м" },
-  ];
+function SavedMovies({
+  setChecked,
+  checked,
+  filterMovies,
+  savedMovies,
+  setSavedMovies,
+  sortSavedMovies,
+  setSortSavedMovies,
+  setIsDisabledChekbox,
+  isDisabledChekbox,
+  disabledButtonSubmitSearch,
+  disabledInput,
+}) {
+  const [showSavedMovies, setShowSavedMovies] = useState(false);
 
+  useEffect(() => {
+    setSortSavedMovies([]);
+    setChecked(false);
+    setShowSavedMovies(true);
+  }, []);
+
+  function handleSubmitSearch(value, checked) {
+    filterMovies(value, checked, savedMovies);
+    setShowSavedMovies(false);
+  }
   return (
     <main className="saved-movies">
-      <SearchForm></SearchForm>
-      <MoviesCardList>
-        {moviess.map((item, index) => (
-          <MoviesCard
-            key={index}
-            src={item.img}
-            name={item.name}
-            duration={item.duration}
-          ></MoviesCard>
-        ))}
-      </MoviesCardList>
+      <SearchForm
+        setIsDisabledChekbox={setIsDisabledChekbox}
+        setChecked={setChecked}
+        checked={checked}
+        handleSubmitSearch={handleSubmitSearch}
+        isDisabledChekbox={isDisabledChekbox}
+        disabledInput={disabledInput}
+        disabledButtonSubmitSearch={disabledButtonSubmitSearch}
+      ></SearchForm>
+      {showSavedMovies ? (
+        <MoviesCardList>
+          {savedMovies.map((item) => (
+            <MoviesCard
+              savedMovies={savedMovies}
+              setSavedMovies={setSavedMovies}
+              key={item._id}
+              id={item.movieId}
+              item={item}
+              link={item.trailerLink}
+              src={item.image}
+              name={item.nameRU}
+              duration={item.duration}
+            ></MoviesCard>
+          ))}
+        </MoviesCardList>
+      ) : sortSavedMovies.length !== 0 ? (
+        <MoviesCardList>
+          {sortSavedMovies.map((item, index) => (
+            <MoviesCard
+              savedMovies={savedMovies}
+              setSavedMovies={setSavedMovies}
+              key={item._id}
+              id={item.movieId}
+              item={item}
+              link={item.trailerLink}
+              src={item.image}
+              name={item.nameRU}
+              duration={item.duration}
+              sortSavedMovies={sortSavedMovies}
+              setSortSavedMovies={setSortSavedMovies}
+            ></MoviesCard>
+          ))}
+        </MoviesCardList>
+      ) : (
+        <div className="info-container">
+          <p className="info-container__text">
+            "Ничего не найдено. Попробуйте еще раз."
+          </p>
+        </div>
+      )}
     </main>
   );
 }
